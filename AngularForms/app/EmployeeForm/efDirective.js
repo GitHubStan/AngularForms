@@ -1,5 +1,5 @@
 ﻿
-angularFormsApp.directive('employeeForm',
+angular.module('angularFormsApp').directive('employeeForm',
     function () {
 
         return {

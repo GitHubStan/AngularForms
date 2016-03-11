@@ -1,5 +1,5 @@
 ﻿
-angularFormsApp.factory('efService',
+angular.module('angularFormsApp').factory('efService',
     function() {
         return {
             employee: {
@@ -11,5 +11,5 @@ angularFormsApp.factory('efService',
                 perkSixWeeks: true,
                 payrollType: "none"
             }
-        }
+    }
     });
