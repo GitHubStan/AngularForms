@@ -1,2 +1,12 @@
-﻿<input type="button" class="btn btn-primary" value="Add New Employee"
-       ng-click="addNewEmployee()" />
+﻿<div class="col-sm-3">
+
+    <p>
+        <input type="button" class="btn btn-primary btn-block" value="Add New Employee" ng-click="showCreateNewEmployeeForm()" />
+    </p>
+
+    <p ng-repeat="employee in getEmployees()">
+        <input type="button" class="btn btn-primary btn-block" 
+               ng-click="showUpdateEmployeeForm(employee.id)" value="Update Employee: {{employee.id}}" />
+    </p>
+
+</div>

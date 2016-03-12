@@ -3,8 +3,12 @@
 
     angular.module('angularFormsApp').controller("HomeController",
         function ($scope, $location, DataService) {
-            $scope.addNewEmployee = function () {
+            $scope.showCreateNewEmployeeForm = function () {
                 $location.path('/newEmployeeForm');
             };
+            $scope.showUpdateEmployeeForm = function(employeeId) {
+                $location.path('/updateEmployeeForm/' + employeeId);
+            };
+            $scope.getEmployees = DataService.getEmployees;
         });
 })();

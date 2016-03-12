@@ -3,17 +3,47 @@
 
     angular.module('angularFormsApp').factory('DataService',
         function () {
-            var employee = {
-                fullName: "Milton Waddams",
-                notes: "The ideal employee.  Just don't touch his red stapler.",
-                department: "Administration",
-                perkCar: true,
-                perkStock: false,
-                perkSixWeeks: true,
-                payrollType: "none"
+
+            var employees = [];
+
+            initialize();
+
+            return {
+                getEmployees: getEmployees,
+                getEmployee: getEmployee,
+                insertEmployee: insertEmployee,
+                updateEmployee: updateEmployee
+            };
+
+            function initialize() {
+                employees[0] = {
+                    id: 0,
+                    fullName: "Milton Waddams",
+                    notes: "The ideal employee.  Just don't touch his red stapler.",
+                    department: "Administration",
+                    perkCar: true,
+                    perkStock: false,
+                    perkSixWeeks: true,
+                    payrollType: "none"
+                }
             }
 
-            return { employee: employee };
+            function insertEmployee (employee) {
+                employee.id = employees.length;
+                return employees.push(employee);
+            }
+
+            function updateEmployee(employee) {
+                employees[employee.id] = employee;
+            }
+
+            function getEmployee(id) {
+                return employees[id];
+            }
+
+            function getEmployees() {
+                return employees;
+            }
         });
 })();
 
