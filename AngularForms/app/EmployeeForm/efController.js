@@ -2,13 +2,13 @@
 
     'use strict';
 
-    angular.module('angularFormsApp').controller('efController',
-        function efController($scope, $window, $routeParams, DataService) {
+    angular.module('angularFormsApp').controller('efController',['$scope', '$window', '$routeParams', '$uibModalInstance', 'employeeId', 'DataService',
+        function efController($scope, $window, $routeParams, $uibModalInstance, employeeId, DataService) {
 
-            if ($routeParams.id) {
-                $scope.employee = DataService.getEmployee($routeParams.id);
+            if (employeeId !== undefined) {
+                $scope.employee = DataService.getEmployee(employeeId);
             } else {
-                $scope.employee = { id: 0 };
+                $scope.employee = { id: undefined };
             }
             
             $scope.editableEmployee = angular.copy($scope.employee);
@@ -17,18 +17,18 @@
 
             $scope.submitForm = function () {
 
-                if ($scope.editableEmployee.id === 0) {
+                if ($scope.editableEmployee.id === undefined) {
                     DataService.insertEmployee($scope.editableEmployee);
                 } else {
                     DataService.updateEmployee($scope.editableEmployee);
                 }
 
                 $scope.employee = angular.copy($scope.editableEmployee);
-                $window.history.back();
+                $uibModalInstance.close();
             };
 
             $scope.cancelForm = function () {
-                $window.history.back();
+                $uibModalInstance.dismiss();
             };
-        });
+        }]);
 })();
