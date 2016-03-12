@@ -1,9 +1,14 @@
-﻿
-angular.module('angularFormsApp').directive('employeeForm',
-    function () {
+﻿(function() {
 
-        return {
-            restrict: 'E',
-            templateUrl: 'app/EmployeeForm/efTemplate.html'
-        }
-});
+    'use strict';
+
+    angular.module('angularFormsApp').directive('employeeForm',
+        function () {
+
+            return {
+                restrict: 'E',
+                templateUrl: 'app/EmployeeForm/efTemplate.html'
+            }
+    });    
+})();
+

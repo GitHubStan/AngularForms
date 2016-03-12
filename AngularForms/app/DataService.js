@@ -1,8 +1,9 @@
-﻿
-angular.module('angularFormsApp').factory('efService',
-    function() {
-        return {
-            employee: {
+﻿(function() {
+    'use strict';
+
+    angular.module('angularFormsApp').factory('DataService',
+        function () {
+            var employee = {
                 fullName: "Milton Waddams",
                 notes: "The ideal employee.  Just don't touch his red stapler.",
                 department: "Administration",
@@ -11,5 +12,8 @@ angular.module('angularFormsApp').factory('efService',
                 perkSixWeeks: true,
                 payrollType: "none"
             }
-    }
-    });
+
+            return { employee: employee };
+        });
+})();
+
