@@ -2,6 +2,7 @@
 	'use strict';
 
 	angular.module('angularFormsApp', [
-		'ngRoute'
+		'ngRoute',
+        'ui.bootstrap'
 	]);
 })();

@@ -21,10 +21,17 @@
                     fullName: "Milton Waddams",
                     notes: "The ideal employee.  Just don't touch his red stapler.",
                     department: "Administration",
+                    dateHired: "July 11 2014",
+                    breakTime: Date(),
+                    topProgrammingLanguage: "C#",
+                    interviewRating: 1,
                     perkCar: true,
                     perkStock: false,
                     perkSixWeeks: true,
-                    payrollType: "none"
+                    payrollType: "none",
+                    isUnderNonCompete: true,
+                    nonCompeteNotes: "The employee is non-competitive ;)"
+
                 }
             }
 
