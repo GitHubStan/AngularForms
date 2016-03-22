@@ -23,13 +23,15 @@
                 $scope.percent = 100 * (value / 10);
             };
 
-            $scope.shouldShowFullName = function() {
-                return true;
-            };
-
             $scope.submitForm = function () {
 
-                 if ($scope.editableEmployee.id === 0) {
+                $scope.$broadcast('show-errors-event');
+
+                if ($scope.employeeForm.$invalid) {
+                    return;
+                }
+
+                if ($scope.editableEmployee.id === 0) {
                     DataService.insertEmployee($scope.editableEmployee);
                 } else {
                     DataService.updateEmployee($scope.editableEmployee);
@@ -41,6 +43,10 @@
 
             $scope.cancelForm = function () {
                 $window.history.back();
+            };
+
+            $scope.resetForm = function() {
+                $scope.$broadcast('hide-errors-event');
             };
         });
 })();

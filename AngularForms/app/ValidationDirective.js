@@ -3,7 +3,7 @@
     'use strict';
 
     angular.module('angularFormsApp')
-        .directive('showErrors', function() {
+        .directive('showErrors', function($timeout) {
 
         return {
             restrict: 'A',
@@ -20,12 +20,20 @@
                 // on the form controller
                 var inputName = inputNgEl.attr('name');
 
-                var helpText = angular.element(el[0].querySelector(".help-block"));
-
                 // only apply the has-error class after the user leaves the text 
                 inputNgEl.bind('blur', function() {
                     el.toggleClass('has-error', formCtrl[inputName].$invalid);
-                    helpText.toggleClass('hide', formCtrl[inputName].$valid);
+                });
+
+                scope.$on('show-errors-event', function () {
+                    el.toggleClass('has-error', formCtrl[inputName].$invalid);
+                });
+
+                scope.$on('hide-errors-event', function() {
+                    //timeout lets angular finish first, avoiding a race condition
+                    $timeout(function () {
+                        el.removeClass('has-error');
+                    }, 0, false);
                 });
             }
         };

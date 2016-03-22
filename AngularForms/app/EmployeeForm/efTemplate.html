@@ -6,8 +6,10 @@
             <label for="fullName" class="col-sm-3 control-label">Name</label>
             <div class="col-sm-9">
                 <input type="text" id="fullName" name="fullName" class="form-control"
-                       ng-model="editableEmployee.fullName" ng-required="shouldShowFullName()" />
-                <span class="help-block hide">Full Name is required</span>
+                       ng-model="editableEmployee.fullName" ng-required="true"
+                       ng-pattern="/^A/" />
+                <span class="help-block" ng-if="employeeForm.fullName.$error.required">Full Name is required</span>
+                <span class="help-block" ng-if="employeeForm.fullName.$error.pattern">Name must start with A</span>
             </div>
         </div>
         
@@ -16,7 +18,8 @@
             <div class="col-sm-9">
                 <input type="email" id="emailAddress" name="emailAddress" class="form-control"
                        ng-model="editableEmployee.emailAddress" ng-required="true" />
-                <span class="help-block hide">A proper email address is required.</span>
+                <span class="help-block"
+                      ng-if="employeeForm.emailAddress.$error">A proper email address is required.</span>
             </div>
         </div>
 
@@ -146,7 +149,11 @@
     </fieldset>
 
     <div class="col-sm-offset-3">
-        <input type="submit" class="btn btn-primary" value="Submit" ng-click="submitForm()" />
-        <input type="button" class="btn btn-primary" value="Cancel" ng-click="cancelForm()" />
+        <input type="button" class="btn btn-primary" value="Cancel" 
+               ng-click="cancelForm()" />
+        <input type="submit" class="btn btn-primary" value="Submit" 
+               ng-click="submitForm()"/>
+        <input type="reset" class="btn btn-warning" value="Reset" 
+               ng-click="resetForm()"/>
     </div>
 </form>
