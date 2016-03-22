@@ -19,6 +19,7 @@
                 employees[0] = {
                     id: 0,
                     fullName: "Milton Waddams",
+                    emailAddress: "Milton@RedStapler.com",
                     notes: "The ideal employee.  Just don't touch his red stapler.",
                     department: "Administration",
                     dateHired: "July 11 2014",

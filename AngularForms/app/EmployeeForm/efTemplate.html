@@ -1,17 +1,28 @@
-﻿<form class="form-horizontal" role="form">
+﻿<form class="form-horizontal" name="employeeForm" novalidate role="form">
 
     <fieldset>
         <legend>Basic Information</legend>
-        <div class="form-group">
+        <div class="form-group" show-errors>
             <label for="fullName" class="col-sm-3 control-label">Name</label>
             <div class="col-sm-9">
                 <input type="text" id="fullName" name="fullName" class="form-control"
-                       ng-model="editableEmployee.fullName" />
+                       ng-model="editableEmployee.fullName" ng-required="shouldShowFullName()" />
+                <span class="help-block hide">Full Name is required</span>
+            </div>
+        </div>
+        
+        <div class="form-group" show-errors>
+            <label for="emailAddress" class="col-sm-3 control-label">Email</label>
+            <div class="col-sm-9">
+                <input type="email" id="emailAddress" name="emailAddress" class="form-control"
+                       ng-model="editableEmployee.emailAddress" ng-required="true" />
+                <span class="help-block hide">A proper email address is required.</span>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="notes" class="col-sm-3 control-label">Notes</label>
+            <label for="notes" class="col-sm-3 control-label"
+                   ng-class="{'has-error': ng-touched}">Notes</label>
             <div class="col-sm-9">
                 <textarea name="notes" id="notes" class="form-control" rows="5" cols="40"
                           ng-model="editableEmployee.notes"></textarea>
